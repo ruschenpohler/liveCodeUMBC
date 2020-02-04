@@ -1,0 +1,9 @@
+#!/bin/sh
+jupyter contrib nbextension install --user
+jupyter nbextension enable ruler
+result=$(python <<EOF
+from notebook.services.config.manager import ConfigManager
+cm = ConfigManager()
+cm.update('notebook', {"ruler_column": [80]})
+EOF
+)
